@@ -21,26 +21,20 @@ Here is an overview of the files in this repository and their purpose:
 * `README.md`: Main documentation to explain the project and provide execution instructions. I 
 
 ## Requirements
-All project dependencies are listed in the `requirements.txt` file. However, to ensure full reproducibility and avoid local environment conflicts, a Docker container environment has been configured. You can build the Docker image locally using the provided `Dockerfile`. The image can also be downloaded from my DockerHub with the following command:
+All project dependencies are listed in the `requirements.txt` file. However, to ensure full reproducibility and avoid local environment conflicts, a Docker container environment has been configured. You can download the Docker image locally from DockerHub with the following command:
 
 ```bash
 docker pull francescatorelli/project_psd:latest
 ```
 
-## Execution 
-To execute the program, you can build and run the Docker container. This project launches an interactive Jupyter Notebook environment.
-First, build the Docker image from the root directory of the cloned repository:
-```bash
-docker build -t project_psd .
-```
-
-Once the image is built, you can run the container using the following command:
+## Execution
+After the image has been pulled from Docker Hub, the container can be executed with the following command:
 
 ```bash
-docker run -p 8888:8888 project_psd
+docker run -p 8888:8888 francescatorelli/project_psd:latest
 ```
 
-As soon as the container is running, the terminal will display a URL with an access token. Copy and paste that link into your browser to open the notebook.
+This project launches an interactive Jupyter Notebook environment. As soon as the container is running, the terminal will display a URL with an access token. Copy and paste that link into the browser to open the notebook.
 
 ## Dataset
 The models are trained on digitized waveform arrays. The original dataset comprises hundreds of thousands of raw arrays. Each raw array contains 514 elements: the first element represents the Detector ID, the second element is the ToF measurement, and the remaining 512 elements constitute the digitized pulse shape.  
