@@ -10,6 +10,8 @@ RUN chown -R docker_user:docker_user /home/project
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+RUN gdown "https://drive.google.com/uc?id=1vbydwF65iFsPQjWeqUYbtWQ7Whjfn40v" -O /home/project/data_small.npy
+
 COPY --chown=docker_user:docker_user . .
 
 USER docker_user
