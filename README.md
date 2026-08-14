@@ -10,21 +10,40 @@ Moreover, a core focus of this work is analyzing optimization strategies: specif
 
 Furthermore, by comparing Deep Learning with traditional Machine Learning, this study emphasizes that computationally expensive models (like CNNs) are not always the optimal choice. It demonstrates that near-identical classification performance can be achieved in a much more efficient and interpretable way using lighter algorithms, such as Random Forest.
 
-## Requirements
-All project dependencies are listed in the `requirements.txt` file. However, to ensure full reproducibility and avoid local environment conflicts, a Docker container environment has been configured. You can build the Docker image locally using the provided `Dockerfile`. The image can be downloaded from my DockerHub with the following command:
+## Content of the Git Repository
+Here is an overview of the files in this repository and their purpose:
 
-?????
+* `PulseShapeDiscrimination_ML_project_Torelli.ipynb`: It's the Jupyter notebook with the entire project. In one of the first cells, there's an automated script (using `gdown`) to download the dataset directly from Google Drive.
+* `Dockerfile`: Contains the instructions to build the Docker image.
+* `requirements.txt`: The list of all the dependencies of the project used to build the container.
+* `.gitignore`: A Git configuration file that prevents heavy files (like the `data_small.npy` dataset), system cache, or temporary Jupyter files from being uploaded to GitHub.
+* `.dockerignore`: Similar to the previous one, but for Docker. It prevents unnecessary files from being copied into the Docker image, keeping the build fast and lightweight.
+* `README.md`: Main documentation to explain the project and provide execution instructions. I 
+
+## Requirements
+All project dependencies are listed in the `requirements.txt` file. However, to ensure full reproducibility and avoid local environment conflicts, a Docker container environment has been configured. You can build the Docker image locally using the provided `Dockerfile`. The image can also be downloaded from my DockerHub with the following command:
+
+```bash
+docker pull francescatorelli/project_PSD:latest
+```
 
 ## Execution 
+To execute the program, you can build and run the Docker container. This project launches an interactive Jupyter Notebook environment.
+First, build the Docker image from the root directory of the cloned repository:
+```bash
+docker build -t project_PSD .
+```
 
-## Content of the Git Repository
+Once the image is built, you can run the container using the following command:
+
+```bash
+docker run -p 8888:8888 project_PSD
+```
+
+As soon as the container is running, the terminal will display a URL with an access token. Copy and paste that link into your browser to open the notebook.
 
 ## Dataset
-The models are trained on digitized waveform arrays. The original dataset comprises hundreds of thousands of raw arrays. Each raw array contains 514 elements: the first element represents the Detector ID, the second element is the ToF measurement, and the remaining 512 elements constitute the digitized pulse shape.
+The models are trained on digitized waveform arrays. The original dataset comprises hundreds of thousands of raw arrays. Each raw array contains 514 elements: the first element represents the Detector ID, the second element is the ToF measurement, and the remaining 512 elements constitute the digitized pulse shape.  
 During the preprocessing phase, the metadata (Detector ID and ToF) is sliced out. The ToF measurements are stored separately. The isolated 512-element signals are then normalized with respect to their maximum amplitude.
 
-Since the dataset for the project has too big dimensions for GitHub, the `data_small.npy` file was uploaded on a [Google Drive folder](https://drive.google.com/drive/folders/17TM3GvRYt0jEr_FfWy11i6QG5e5SwdfS?usp=sharing). The Jupyter Notebook includes an automated `gdown` script that will download and load the required dataset directly into the Docker container on the first run.
-
-
-# SCNSN_Project_PulseShapeDiscrimination
-Repo with all the material for the Software and Computing project submission.
+This dataset was sourced from a freely accessible Google Drive folder dedicated to Machine Learning and Deep Learning exercises. Since the dataset (`data_small.npy`) is too large to be hosted directly on GitHub, the Jupyter Notebook includes an automated `gdown` script. This script will download the file from a [Google Drive folder](https://drive.google.com/drive/folders/17TM3GvRYt0jEr_FfWy11i6QG5e5SwdfS?usp=sharing) and load it into the Docker container on the first run.
