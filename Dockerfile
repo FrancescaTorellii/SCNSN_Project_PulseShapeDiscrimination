@@ -2,9 +2,10 @@ FROM python:3.12-slim
 
 USER root
 
-RUN useradd -m docker_user
-
 WORKDIR /home/project
+
+RUN useradd -m docker_user
+RUN chown -R docker_user:docker_user /home/project
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
