@@ -1,3 +1,15 @@
+#ignores the data downloaded with gdown
+*.npy
+data_small.npy
+
+#ignores generic files in case they where downloaded
+*.csv
+*.zip
+
+# ignores stuff from of Mac and Windows
+.DS_Store
+Thumbs.db
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
