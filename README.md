@@ -24,20 +24,20 @@ Here is an overview of the files in this repository and their purpose:
 All project dependencies are listed in the `requirements.txt` file. However, to ensure full reproducibility and avoid local environment conflicts, a Docker container environment has been configured. You can build the Docker image locally using the provided `Dockerfile`. The image can also be downloaded from my DockerHub with the following command:
 
 ```bash
-docker pull francescatorelli/project_PSD:latest
+docker pull francescatorelli/project_psd:latest
 ```
 
 ## Execution 
 To execute the program, you can build and run the Docker container. This project launches an interactive Jupyter Notebook environment.
 First, build the Docker image from the root directory of the cloned repository:
 ```bash
-docker build -t project_PSD .
+docker build -t project_psd .
 ```
 
 Once the image is built, you can run the container using the following command:
 
 ```bash
-docker run -p 8888:8888 project_PSD
+docker run -p 8888:8888 project_psd
 ```
 
 As soon as the container is running, the terminal will display a URL with an access token. Copy and paste that link into your browser to open the notebook.
