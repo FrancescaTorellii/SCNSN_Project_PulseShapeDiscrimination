@@ -18,10 +18,10 @@ Here is an overview of the files in this repository and their purpose:
 * `requirements.txt`: The list of all the dependencies of the project used to build the container.
 * `.gitignore`: A Git configuration file that prevents heavy files (like the `data_small.npy` dataset), system cache, or temporary Jupyter files from being uploaded to GitHub.
 * `.dockerignore`: Similar to the previous one, but for Docker. It prevents unnecessary files from being copied into the Docker image, keeping the build fast and lightweight.
-* `README.md`: Main documentation to explain the project and provide execution instructions. I 
+* `README.md`: Main documentation to explain the project and provide execution instructions.
 
 ## Requirements
-All project dependencies are listed in the `requirements.txt` file. However, to ensure full reproducibility and avoid local environment conflicts, a Docker container environment has been configured. You can download the Docker image locally from DockerHub with the following command:
+All project dependencies are listed in the `requirements.txt` file. However, to ensure full reproducibility and avoid local environment conflicts, a Docker container environment has been configured. The Docker image can be download locally from DockerHub with the following command:
 
 ```bash
 docker pull francescatorelli/project_psd:latest
