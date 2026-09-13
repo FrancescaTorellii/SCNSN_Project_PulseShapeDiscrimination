@@ -10,7 +10,7 @@ RUN chown -R docker_user:docker_user /home/project
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY --chown=docker_user:docker_user PulseShapeDiscrimination_ML_project_Torelli.ipynb .
+COPY --chown=docker_user:docker_user PulseShapeDiscrimination_SCNSN_project_Torelli.ipynb .
 COPY --chown=docker_user:docker_user README.md .
 
 USER docker_user
