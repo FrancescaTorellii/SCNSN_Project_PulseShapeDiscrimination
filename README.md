@@ -10,6 +10,8 @@ Moreover, a core focus of this work is analyzing optimization strategies: specif
 
 Furthermore, by comparing Deep Learning with traditional Machine Learning, this study emphasizes that computationally expensive models (like CNNs) are not always the optimal choice. It demonstrates that near-identical classification performance can be achieved in a much more efficient and interpretable way using lighter algorithms, such as Random Forest.
 
+Finally, systematic hyperparameter tuning via Grid Search was implemented throughout the project. This rigorous optimization step ensures that every evaluated architecture operates at its peak capacity, providing a mathematically solid foundation for all subsequent comparisons.
+
 ## Content of the Git Repository
 Here is an overview of the files in this repository and their purpose:
 
@@ -21,23 +23,36 @@ Here is an overview of the files in this repository and their purpose:
 * `README.md`: Main documentation to explain the project and provide execution instructions.
 
 ## Requirements
-All project dependencies are listed in the `requirements.txt` file. However, to ensure full reproducibility and avoid local environment conflicts, a Docker container environment has been configured. The Docker image can be download locally from DockerHub with the following command:
-
-```bash
-docker pull francescatorelli/project_psd:latest
-```
+All project dependencies are listed in the `requirements.txt` file. However, to ensure full reproducibility and avoid local environment conflicts, a Docker container environment has been configured. The pre-built Docker image is hosted on Docker Hub. It will be automatically downloaded when executing the run command in the next step.
 
 ## Execution
-After the image has been pulled from Docker Hub, the container can be executed with the following command:
+To execute the program and comply with security and performance best practices, the image relies on **volume mounting**. Therefore, the steps for execution are:
 
+**Step 1: Clone the repository**
+
+First, download the repository to your local machine and enter into it:
 ```bash
-docker run -p 8888:8888 francescatorelli/project_psd:latest
+git clone https://github.com/FrancescaTorellii/SCNSN_Project_PulseShapeDiscrimination
+cd SCNSN_Project_PulseShapeDiscrimination
 ```
+or go to the link https://github.com/FrancescaTorellii/SCNSN_Project_PulseShapeDiscrimination
 
-This project launches an interactive Jupyter Notebook environment. As soon as the container is running, the terminal will display a URL with an access token. Copy and paste that link into the browser to open the notebook.
+**Step 2: Run the container**
+
+Once inside the repository folder, run the pre-built Docker image from Docker Hub, using the following commands.\
+For Linux/Mac:
+```bash
+docker run -p 8888:8888 -v "$(pwd):/home/project" francescatorelli/project_psd:latest
+```
+For Windows (Command Prompt):
+```bash
+docker run -p 8888:8888 -v "%cd%:/home/project" francescatorelli/project_psd:latest
+```
+This project launches an interactive Jupyter Notebook environment. As soon as the container is running, the terminal will display a URL with an access token. Copy and paste that link into your browser to open the notebook.
 
 ## Dataset
 The models are trained on digitized waveform arrays. The original dataset comprises hundreds of thousands of raw arrays. Each raw array contains 514 elements: the first element represents the Detector ID, the second element is the ToF measurement, and the remaining 512 elements constitute the digitized pulse shape.  
 During the preprocessing phase, the metadata (Detector ID and ToF) is sliced out. The ToF measurements are stored separately. The isolated 512-element signals are then normalized with respect to their maximum amplitude.
 
-This dataset was sourced from a freely accessible Google Drive folder dedicated to Machine Learning and Deep Learning exercises. Since the dataset (`data_small.npy`) is too large to be hosted directly on GitHub, the Jupyter Notebook includes an automated `gdown` script. This script will download the file from a [Google Drive folder](https://drive.google.com/drive/folders/17TM3GvRYt0jEr_FfWy11i6QG5e5SwdfS?usp=sharing) and load it into the Docker container on the first run.
+This dataset was sourced from a freely accessible Google Drive folder dedicated to Machine Learning and Deep Learning exercises. Since the dataset (`data_small.npy`) is too large to be hosted directly on GitHub, the Jupyter Notebook includes an automated `gdown` script. This script will download the file from a [Google Drive folder](https://drive.google.com/drive/folders/17TM3GvRYt0jEr_FfWy11i6QG5e5SwdfS?usp=sharing) and load it into the Docker container on the first run.\
+Thanks to volume mounting, subsequent runs will detect the local dataset without needing to download it again.
