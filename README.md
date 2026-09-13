@@ -15,7 +15,7 @@ Finally, systematic hyperparameter tuning via Grid Search was implemented throug
 ## Content of the Git Repository
 Here is an overview of the files in this repository and their purpose:
 
-* `PulseShapeDiscrimination_ML_project_Torelli.ipynb`: It's the Jupyter notebook with the entire project. In one of the first cells, there's an automated script (using `gdown`) to download the dataset directly from Google Drive.
+* `PulseShapeDiscrimination_SCNSN_project_Torelli.ipynb`: It's the Jupyter notebook with the entire project. In one of the first cells, there's an automated script (using `gdown`) to download the dataset directly from Google Drive.
 * `Dockerfile`: Contains the instructions to build the Docker image.
 * `requirements.txt`: The list of all the dependencies of the project used to build the container.
 * `.gitignore`: A Git configuration file that prevents heavy files (like the `data_small.npy` dataset), system cache, or temporary Jupyter files from being uploaded to GitHub.
