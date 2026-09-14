@@ -39,14 +39,14 @@ or go to the link https://github.com/FrancescaTorellii/SCNSN_Project_PulseShapeD
 
 **Step 2: Run the container**
 
-Once inside the repository folder, run the pre-built Docker image from Docker Hub, using the following commands.\
+Once inside the repository folder, run the pre-built Docker image (project_psd2) from Docker Hub, using the following commands.\
 For Linux/Mac:
 ```bash
-docker run -p 8888:8888 -v "$(pwd):/home/project" francescatorelli/project_psd:latest
+docker run -p 8888:8888 -v "$(pwd):/home/project" francescatorelli/project_psd2:latest
 ```
 For Windows (Command Prompt):
 ```bash
-docker run -p 8888:8888 -v "%cd%:/home/project" francescatorelli/project_psd:latest
+docker run -p 8888:8888 -v "%cd%:/home/project" francescatorelli/project_psd2:latest
 ```
 This project launches an interactive Jupyter Notebook environment. As soon as the container is running, the terminal will display a URL with an access token. Copy and paste that link into your browser to open the notebook.
 
